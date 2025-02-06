@@ -1,0 +1,27 @@
+version: '3'
+services:
+  login:
+    build:
+      context: ./login
+    ports:
+      - "9001:9001"
+    networks:
+      - microfrontends_network
+  listing:
+    build:
+      context: ./listing
+    ports:
+      - "9002:9002"
+    networks:
+      - microfrontends_network
+  main:
+    build:
+      context: ./main
+    ports:
+      - "9000:9000"
+    networks:
+      - microfrontends_network
+
+networks:
+  microfrontends_network:
+    driver: bridge
